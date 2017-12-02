@@ -38,4 +38,30 @@ defmodule Dec2 do
     sorted_row = Enum.sort(row)
     List.last(sorted_row) - List.first(sorted_row)
   end
+
+  ## Find the evenly divisble number
+  # i.e. in row [5, 9, 2, 8]
+  # it's 8 and 2 => 4
+
+  def solve2 do
+    solve2 @input
+  end
+
+  def solve2 input do
+    input
+    |> Enum.map(&(Enum.sort(&1)))
+    |> Enum.map(&(row_checksum2(&1)))
+    |> List.foldl(0, &(&1 + &2))
+  end
+
+  def row_checksum2([]), do: 0
+
+  def row_checksum2([head | rest]) do
+    case Enum.find rest, &(rem(&1, head) == 0) do
+      nil -> row_checksum2(rest)
+      found ->
+        IO.puts "FOUND #{found} / #{head}"
+        found / head
+    end
+  end
 end
