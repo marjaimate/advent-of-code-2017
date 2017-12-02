@@ -46,6 +46,9 @@ defmodule Dec1 do
     tail = Enum.slice(list, step..length(list))
     list_shifted = tail ++ Enum.slice(list, 0..(step-1))
 
+    # Zip creates tuples of elements from the two lists:
+    # [{a1, b1}, {a2, b2}, ...]
+    # which we can use to compare them
     Enum.zip(list, list_shifted)
     |> List.foldl(0, fn {a, a}, acc -> acc + a
                         {_a, _b}, acc -> acc end)

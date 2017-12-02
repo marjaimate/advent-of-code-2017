@@ -18,12 +18,6 @@ defmodule Dec2 do
     [37,1069,166,1037,172,258,1071,90,497,1219,145,1206,143,153,1067,510]
   ]
 
-  @test_input [
-    [5,1,9,5],
-    [7,5,3],
-    [2,4,6,8]
-  ]
-
   def solve do
     solve @input
   end
@@ -59,9 +53,7 @@ defmodule Dec2 do
   def row_checksum2([head | rest]) do
     case Enum.find rest, &(rem(&1, head) == 0) do
       nil -> row_checksum2(rest)
-      found ->
-        IO.puts "FOUND #{found} / #{head}"
-        found / head
+      found -> found / head
     end
   end
 end
