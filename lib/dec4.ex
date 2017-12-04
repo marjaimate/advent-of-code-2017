@@ -32,4 +32,35 @@ defmodule Dec4 do
       _ -> 0
     end
   end
+
+  def solve2 do
+    with {:ok, data} = File.read("dec4.data") do
+      data
+      |> String.split("\n")
+      |> Enum.reject(&(&1 == ""))
+      |> solve2
+    end
+  end
+
+  def solve2 list do
+    list
+    |> Enum.map(&(String.split(&1, " ")))
+    |> Enum.map(&Dec4.anagrams_count/1)
+    |> Enum.map(&Dec4.valid_pass_word/1)
+    |> Enum.sum
+  end
+
+  def anagrams_count words do
+    words
+      |> Enum.map(&Dec4.normalize/1)
+      |> List.foldl(%{}, fn (w, acc) -> Map.update(acc, w, 0, &(&1 + 1)) end)
+  end
+
+  ## Turn words into ordered list of characters
+  def normalize word do
+    word
+    |> String.codepoints
+    |> Enum.sort
+    |> List.foldl("", &(&2 <> &1))
+  end
 end
