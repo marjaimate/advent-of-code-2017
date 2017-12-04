@@ -53,4 +53,8 @@ defmodule Dec3 do
       _ -> cand + 1
     end
   end
+
+  ## Second part
+  def solve2 do
+  end
 end
