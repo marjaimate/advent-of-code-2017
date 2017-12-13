@@ -1,13 +1,11 @@
 defmodule Dec5 do
+  @input "dec5.data"
+
   def solve do
-    {:ok, data} = File.read("dec5.data")
-    # Get a map, where key is the index (starts with 1 !)
-    # and the value is the instruction
-     data
-     |> String.split("\n")
-     |> Enum.reject(&(&1 == ""))
-     |> Enum.map(&String.to_integer/1)
-     |> solve
+    @input
+    |> Aoc.read_file
+    |> Enum.map(&String.to_integer/1)
+    |> solve
   end
 
   def solve instructions do
@@ -31,14 +29,10 @@ defmodule Dec5 do
 
   # If the offset (i) is greater than 3, decrease by 1
   def solve2 do
-    {:ok, data} = File.read("dec5.data")
-    # Get a map, where key is the index (starts with 1 !)
-    # and the value is the instruction
-     data
-     |> String.split("\n")
-     |> Enum.reject(&(&1 == ""))
-     |> Enum.map(&String.to_integer/1)
-     |> solve2
+    @input
+    |> Aoc.read_file
+    |> Enum.map(&String.to_integer/1)
+    |> solve2
   end
 
   def solve2 instructions do

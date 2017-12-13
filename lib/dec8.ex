@@ -1,11 +1,10 @@
 defmodule Dec8 do
+  @input "dec8.data"
+
   def solve do
-    with {:ok, data} = File.read("dec8.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> solve
-    end
+    @input
+    |> Aoc.read_file
+    |> solve
   end
 
   def solve input do

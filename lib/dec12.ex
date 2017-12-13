@@ -1,12 +1,11 @@
 defmodule Dec12 do
+  @input "dec12.data"
+
   def solve do
-    with {:ok, data} = File.read("dec12.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> List.foldl(%{}, &Dec12.parse/2)
-      |> solve
-    end
+    @input
+    |> Aoc.read_file
+    |> List.foldl(%{}, &Dec12.parse/2)
+    |> solve
   end
 
   def solve input do
@@ -27,13 +26,10 @@ defmodule Dec12 do
   end
 
   def solve2 do
-    with {:ok, data} = File.read("dec12.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> List.foldl(%{}, &Dec12.parse/2)
-      |> solve2
-    end
+    @input
+    |> Aoc.read_file
+    |> List.foldl(%{}, &Dec12.parse/2)
+    |> solve2
   end
 
   def solve2 input do

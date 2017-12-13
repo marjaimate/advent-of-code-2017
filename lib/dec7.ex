@@ -16,16 +16,16 @@ defmodule Dec7 do
     "cntj (57)"
     ]
   end
+
+  @input "dec7.data"
+
   # Build a binary tree
   # from instructions
   # Our tree will be {node_name, weight, [ ..nodes above ... ]}
   def solve do
-    with {:ok, data} = File.read("dec7.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> solve
-    end
+    @input
+    |> Aoc.read_file
+    |> solve
   end
 
   def solve input do
@@ -79,12 +79,9 @@ defmodule Dec7 do
   end
 
   def solve2 do
-    with {:ok, data} = File.read("dec7.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> solve2
-    end
+    @input
+    |> Aoc.read_file
+    |> solve2
   end
 
   def solve2 input do

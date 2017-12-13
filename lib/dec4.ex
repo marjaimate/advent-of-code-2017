@@ -1,11 +1,10 @@
 defmodule Dec4 do
+  @input "dec4.data"
+
   def solve do
-    with {:ok, data} = File.read("dec4.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> solve
-    end
+    @input
+    |> Aoc.read_file
+    |> solve
   end
 
   def solve list do
@@ -34,12 +33,9 @@ defmodule Dec4 do
   end
 
   def solve2 do
-    with {:ok, data} = File.read("dec4.data") do
-      data
-      |> String.split("\n")
-      |> Enum.reject(&(&1 == ""))
-      |> solve2
-    end
+    @input
+    |> Aoc.read_file
+    |> solve2
   end
 
   def solve2 list do

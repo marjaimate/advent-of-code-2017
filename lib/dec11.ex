@@ -1,21 +1,17 @@
 defmodule Dec11 do
+  @input "dec11.data"
+
   def solve do
-    with {:ok, data} = File.read("dec11.data") do
-      data
-      |> String.split(",")
-      |> Enum.map(&(String.replace(&1, "\n", "")))
-      |> solve
-      |> distance(starting())
-    end
+    @input
+    |> Aoc.read_file(:split_by_comma)
+    |> solve
+    |> distance(starting())
   end
 
   def solve2 do
-    with {:ok, data} = File.read("dec11.data") do
-      data
-      |> String.split(",")
-      |> Enum.map(&(String.replace(&1, "\n", "")))
-      |> solve2
-    end
+    @input
+    |> Aoc.read_file(:split_by_comma)
+    |> solve2
   end
 
   def solve2 input do
