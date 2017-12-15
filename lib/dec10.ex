@@ -51,14 +51,10 @@ defmodule Dec10 do
   end
 
   def solve2 do
-    ins = @input2 |> to_charlist() |> Enum.concat([17, 31, 73, 47, 23])
-
-    (0..255)
-    |> Enum.to_list
-    |> solve2(ins)
+    knot_hash @input2
   end
 
-  def solve2 list, ins do
+  def knot_hash list, ins do
     # sparse_hash -> dense hash
     with {result, _, _} <- Enum.reduce(1..64, {list, 0, 0}, fn _, {l, c, s} -> steps(l, ins, c, s) end) do
       result
@@ -71,5 +67,15 @@ defmodule Dec10 do
 
   def to_padded_hex(number) do
     number |> Integer.to_string(16) |> String.pad_leading(2, "0") |> String.downcase()
+  end
+
+  def knot_hash str do
+    ins = str
+          |> to_charlist()
+          |> Enum.concat([17, 31, 73, 47, 23])
+
+    (0..255)
+    |> Enum.to_list
+    |> knot_hash(ins)
   end
 end
